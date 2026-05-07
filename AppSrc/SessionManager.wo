@@ -1,0 +1,13 @@
+﻿Use cWebSessionManager.pkg
+
+Object oSessionManager is a cWebSessionManager
+    Function IsLoggedIn Returns Boolean
+        Function_Return True
+    End_Function
+
+    Function AllowViewAccess Handle hoView String sViewName Returns Boolean
+        Function_Return True
+    End_Function
+End_Object
+
+

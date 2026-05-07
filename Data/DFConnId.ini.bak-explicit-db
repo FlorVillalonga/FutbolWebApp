@@ -1,0 +1,5 @@
+[connection1]
+id=Futbol
+driver=ODBC_DRV
+connection=DSN=MYSQL_DF
+UID=root

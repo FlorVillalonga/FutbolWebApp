@@ -1,0 +1,11 @@
+#REPLACE FILE263 webappsession
+#REPLACE webappsession.File_Number |CI263
+#REPLACE webappsession.SessionKey |FS263,1
+#REPLACE webappsession.CreateDate |FD263,2
+#REPLACE webappsession.CreateTime |FS263,3
+#REPLACE webappsession.LastAccessDate |FD263,4
+#REPLACE webappsession.LastAccessTime |FS263,5
+#REPLACE webappsession.UseCount |FN263,6
+#REPLACE webappsession.RemoteAddress |FS263,7
+#REPLACE webappsession.LoginName |FS263,8
+#REPLACE webappsession.Active |FS263,9
