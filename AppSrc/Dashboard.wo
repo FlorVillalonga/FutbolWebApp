@@ -55,16 +55,17 @@ Object oDashboard is a cWebView
             Object oWelcomeTile is a cWebHtmlBox
                 Set piColumnSpan to 24
                 Set psCSSClass to "SoccerHero"
-                Set psHtml to '<div class="SoccerHero_Inner"><div><div class="SoccerHero_Eyebrow">Panel de gestion deportiva</div><div class="SoccerHero_Title">Futbol WebApp</div><div class="SoccerHero_Text">Consulta y administra ligas, equipos, jugadores, entrenadores y posiciones desde una interfaz clara y profesional.</div></div><div class="SoccerHero_Badge"><span>DF</span><strong>DataFlex</strong><small>MySQL</small></div></div>'
+                Set psHtml to '<div style="min-height:220px;border-radius:18px;padding:34px 40px;margin-bottom:18px;color:#fff;background:linear-gradient(135deg,#07111f 0%,#0f2f2d 54%,#14532d 100%);box-shadow:0 20px 45px rgba(15,23,42,.22);position:relative;overflow:hidden;"><div style="max-width:700px;position:relative;z-index:2;"><div style="display:inline-block;margin-bottom:12px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.12);color:#bbf7d0;font-size:12px;font-weight:800;text-transform:uppercase;">Panel de gestion deportiva</div><div style="margin-bottom:12px;font-size:46px;line-height:1;font-weight:900;">Futbol WebApp</div><div style="max-width:620px;color:#dbeafe;font-size:17px;line-height:1.55;">Consulta y administra ligas, equipos, jugadores, entrenadores y posiciones desde una interfaz clara y profesional.</div></div><div style="position:absolute;right:42px;top:38px;width:138px;height:138px;border-radius:22px;display:flex;align-items:center;justify-content:center;flex-direction:column;background:rgba(15,23,42,.66);border:1px solid rgba(255,255,255,.16);"><span style="font-size:38px;font-weight:900;color:#22c55e;">DF</span><strong>DataFlex</strong><small style="color:#93c5fd;font-weight:700;">MySQL</small></div><div style="position:absolute;right:-70px;bottom:-95px;width:280px;height:280px;border-radius:50%;border:2px solid rgba(255,255,255,.18);"></div></div>'
     
                 Procedure OnLoad
-                    Send UpdateHTML ('<div class="SoccerHero_Inner">' + ;
-                                     '<div>' + ;
-                                     '<div class="SoccerHero_Eyebrow">Panel de gestion deportiva</div>' + ;
-                                     '<div class="SoccerHero_Title">Futbol WebApp</div>' + ;
-                                     '<div class="SoccerHero_Text">Consulta y administra ligas, equipos, jugadores, entrenadores y posiciones desde una interfaz clara y profesional.</div>' + ;
+                    Send UpdateHTML ('<div style="min-height:220px;border-radius:18px;padding:34px 40px;margin-bottom:18px;color:#fff;background:linear-gradient(135deg,#07111f 0%,#0f2f2d 54%,#14532d 100%);box-shadow:0 20px 45px rgba(15,23,42,.22);position:relative;overflow:hidden;">' + ;
+                                     '<div style="max-width:700px;position:relative;z-index:2;">' + ;
+                                     '<div style="display:inline-block;margin-bottom:12px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.12);color:#bbf7d0;font-size:12px;font-weight:800;text-transform:uppercase;">Panel de gestion deportiva</div>' + ;
+                                     '<div style="margin-bottom:12px;font-size:46px;line-height:1;font-weight:900;">Futbol WebApp</div>' + ;
+                                     '<div style="max-width:620px;color:#dbeafe;font-size:17px;line-height:1.55;">Consulta y administra ligas, equipos, jugadores, entrenadores y posiciones desde una interfaz clara y profesional.</div>' + ;
                                      '</div>' + ;
-                                     '<div class="SoccerHero_Badge"><span>DF</span><strong>DataFlex</strong><small>MySQL</small></div>' + ;
+                                     '<div style="position:absolute;right:42px;top:38px;width:138px;height:138px;border-radius:22px;display:flex;align-items:center;justify-content:center;flex-direction:column;background:rgba(15,23,42,.66);border:1px solid rgba(255,255,255,.16);"><span style="font-size:38px;font-weight:900;color:#22c55e;">DF</span><strong>DataFlex</strong><small style="color:#93c5fd;font-weight:700;">MySQL</small></div>' + ;
+                                     '<div style="position:absolute;right:-70px;bottom:-95px;width:280px;height:280px;border-radius:50%;border:2px solid rgba(255,255,255,.18);"></div>' + ;
                                      '</div>')
                 End_Procedure
                 
@@ -74,7 +75,7 @@ Object oDashboard is a cWebView
                 Set pbServerOnClick to True
                 Set piColumnSpan to 8
                 Set psCSSClass to "SoccerTile SoccerTile_Staff"
-                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">DT</div><div class="SoccerTile_Title">Entrenadores</div><div class="SoccerTile_Text">Gestion tecnica de los equipos</div></div>'
+                Set psHtml to '<div data-ServerOnClick="openview" style="min-height:160px;padding:24px;border-radius:14px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#334155,#0f172a);box-shadow:0 14px 30px rgba(15,23,42,.14);"><div style="width:52px;height:52px;margin-bottom:22px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.13);font-weight:900;">DT</div><div style="margin-bottom:8px;font-size:24px;font-weight:850;">Entrenadores</div><div style="color:rgba(255,255,255,.78);font-size:14px;">Gestion tecnica de los equipos</div></div>'
                                 
                 WebRegisterPath ntNavigateForwardCustom oSelectEntrenador
                 
@@ -89,7 +90,7 @@ Object oDashboard is a cWebView
                 Set piColumnSpan to 8
                 Set piColumnIndex to 8
                 Set psCSSClass to "SoccerTile SoccerTile_Player"
-                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">11</div><div class="SoccerTile_Title">Jugadores</div><div class="SoccerTile_Text">Planteles, datos y detalle individual</div></div>'
+                Set psHtml to '<div data-ServerOnClick="openview" style="min-height:160px;padding:24px;border-radius:14px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#166534,#0f3a2c);box-shadow:0 14px 30px rgba(15,23,42,.14);"><div style="width:52px;height:52px;margin-bottom:22px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.13);font-weight:900;">11</div><div style="margin-bottom:8px;font-size:24px;font-weight:850;">Jugadores</div><div style="color:rgba(255,255,255,.78);font-size:14px;">Planteles, datos y detalle individual</div></div>'
     
                 WebRegisterPath ntNavigateForwardCustom oSelectJugador
                 
@@ -104,7 +105,7 @@ Object oDashboard is a cWebView
                 Set piColumnSpan to 8
                 Set piColumnIndex to 16
                 Set psCSSClass to "SoccerTile SoccerTile_Team"
-                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">FC</div><div class="SoccerTile_Title">Equipos</div><div class="SoccerTile_Text">Clubes asociados a cada liga</div></div>'
+                Set psHtml to '<div data-ServerOnClick="openview" style="min-height:160px;padding:24px;border-radius:14px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#075985,#0f172a);box-shadow:0 14px 30px rgba(15,23,42,.14);"><div style="width:52px;height:52px;margin-bottom:22px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.13);font-weight:900;">FC</div><div style="margin-bottom:8px;font-size:24px;font-weight:850;">Equipos</div><div style="color:rgba(255,255,255,.78);font-size:14px;">Clubes asociados a cada liga</div></div>'
             
                 WebRegisterPath ntNavigateForwardCustom oSelectEquipo
                 
@@ -119,7 +120,7 @@ Object oDashboard is a cWebView
                 Set pbServerOnClick to True
                 Set piColumnSpan to 12
                 Set psCSSClass to "SoccerTile SoccerTile_League"
-                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">LG</div><div class="SoccerTile_Title">Ligas</div><div class="SoccerTile_Text">Competencias, paises y cupos</div></div>'
+                Set psHtml to '<div data-ServerOnClick="openview" style="min-height:160px;padding:24px;border-radius:14px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#1d4ed8,#0f172a);box-shadow:0 14px 30px rgba(15,23,42,.14);"><div style="width:52px;height:52px;margin-bottom:22px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.13);font-weight:900;">LG</div><div style="margin-bottom:8px;font-size:24px;font-weight:850;">Ligas</div><div style="color:rgba(255,255,255,.78);font-size:14px;">Competencias, paises y cupos</div></div>'
             
                 WebRegisterPath ntNavigateForwardCustom oSelectLiga
                 
@@ -134,7 +135,7 @@ Object oDashboard is a cWebView
                 Set piColumnSpan to 12
                 Set piColumnIndex to 12
                 Set psCSSClass to "SoccerTile SoccerTile_Position"
-                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">POS</div><div class="SoccerTile_Title">Posiciones</div><div class="SoccerTile_Text">Roles dentro del campo de juego</div></div>'
+                Set psHtml to '<div data-ServerOnClick="openview" style="min-height:160px;padding:24px;border-radius:14px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#0f766e,#0f172a);box-shadow:0 14px 30px rgba(15,23,42,.14);"><div style="width:52px;height:52px;margin-bottom:22px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.13);font-weight:900;">POS</div><div style="margin-bottom:8px;font-size:24px;font-weight:850;">Posiciones</div><div style="color:rgba(255,255,255,.78);font-size:14px;">Roles dentro del campo de juego</div></div>'
             
                 WebRegisterPath ntNavigateForwardCustom oSelectPosicion
                 
