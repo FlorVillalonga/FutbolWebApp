@@ -7,10 +7,14 @@ Use cWebPanel.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
+Use cWebButton.pkg
+Use cWebList.pkg
+Use cWebColumn.pkg
 Use cWebTabContainer.pkg
 Use cWebTabPage.pkg
 
 Use ..\DDSrc\cligaDataDictionary.dd
+Use ..\DDSrc\cequipoDataDictionary.dd
 
 Object oZoomLiga is a cWebView
     Set piColumnCount to 12
@@ -22,6 +26,10 @@ Object oZoomLiga is a cWebView
     Set piMaxWidth to 1024
 
     Object oliga_DD is a cligaDataDictionary
+    End_Object 
+
+    Object oequipo_DD is a cequipoDataDictionary
+        Set DDO_Server To oliga_DD
     End_Object 
 
     Set Main_DD To oliga_DD
@@ -73,6 +81,42 @@ Object oZoomLiga is a cWebView
                     Set psLabel to "Máximo equipos"
                     Set piColumnIndex to 4
                     Set peLabelPosition to lpTop
+                End_Object
+
+                Object oVerEquiposBtn is a cWebButton
+                    Set psCaption to "Ver equipos de esta liga"
+                    Set piColumnSpan to 4
+                    Set piColumnIndex to 8
+
+                    WebRegisterPath ntNavigateForward oSelectEquipo
+
+                    Procedure OnClick
+                        Send NavigatePath
+                    End_Procedure
+
+                    Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                        Move True to NavigateData.bReadOnly
+                    End_Procedure
+                End_Object
+
+                Object oLigaEquiposList is a cWebList
+                    Set Server to oequipo_DD
+                    Set piColumnSpan to 12
+                    Set piColumnIndex to 0
+                    Set pbFillHeight to True
+                    Set pbShowHeader to True
+
+                    Object oequipoNombreCol is a cWebColumn
+                        Entry_Item equipo.Nombre
+                        Set psCaption to "Equipo"
+                        Set piWidth to 60
+                    End_Object
+
+                    Object oequipoLigaCol is a cWebColumn
+                        Entry_Item liga.Nombre
+                        Set psCaption to "Liga"
+                        Set piWidth to 40
+                    End_Object
                 End_Object
             End_Object 
         End_Object 
