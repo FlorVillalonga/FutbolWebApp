@@ -27,7 +27,7 @@ Object oDashboard is a cWebView
     // constraints in the next view that we navigate to.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-    Set piMaxWidth to 1024
+    Set piMaxWidth to 1180
     
     Set psCaption to "Dashboard"
     Set peViewType to vtUndefined
@@ -36,6 +36,7 @@ Object oDashboard is a cWebView
     
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 24
+        Set psCSSClass to "SoccerDashboardPanel"
         
         // - - - - - - - - - - - - - - -
         // Main Panel's Responsive Rules
@@ -44,22 +45,26 @@ Object oDashboard is a cWebView
         WebSetResponsive piColumnCount rmTabletPortrait to 16
     
         Object oTiles_grp is a cWebGroup
-            Set piColumnSpan to 8
+            Set piColumnSpan to 24
             Set pbShowBorder to False
             Set pbShowCaption to False
-            Set piColumnCount to 12
+            Set piColumnCount to 24
             
             Set psCSSClass to "TilesGroup"
     
             Object oWelcomeTile is a cWebHtmlBox
-                Set piColumnSpan to 6
-                Set psCSSClass to "Tile Light"
-                Set psHtml to '<div Class="WebCon_Sizer"><div class="Tile_Title">Welcome</div></div>'
+                Set piColumnSpan to 24
+                Set psCSSClass to "SoccerHero"
+                Set psHtml to '<div class="SoccerHero_Inner"><div><div class="SoccerHero_Eyebrow">Panel de gestion deportiva</div><div class="SoccerHero_Title">Futbol WebApp</div><div class="SoccerHero_Text">Consulta y administra ligas, equipos, jugadores, entrenadores y posiciones desde una interfaz clara y profesional.</div></div><div class="SoccerHero_Badge"><span>DF</span><strong>DataFlex</strong><small>MySQL</small></div></div>'
     
                 Procedure OnLoad
-                    Send UpdateHTML ('<div class="WebCon_Sizer">' + ;
-                                     '<div class="Tile_Title">Futbol WebApp</div>' +;
-                                     '<div class="Tile_Subtitle">Dashboard</div>' +;
+                    Send UpdateHTML ('<div class="SoccerHero_Inner">' + ;
+                                     '<div>' + ;
+                                     '<div class="SoccerHero_Eyebrow">Panel de gestion deportiva</div>' + ;
+                                     '<div class="SoccerHero_Title">Futbol WebApp</div>' + ;
+                                     '<div class="SoccerHero_Text">Consulta y administra ligas, equipos, jugadores, entrenadores y posiciones desde una interfaz clara y profesional.</div>' + ;
+                                     '</div>' + ;
+                                     '<div class="SoccerHero_Badge"><span>DF</span><strong>DataFlex</strong><small>MySQL</small></div>' + ;
                                      '</div>')
                 End_Procedure
                 
@@ -67,10 +72,9 @@ Object oDashboard is a cWebView
     
             Object oEntrenador_Tile is a cWebHtmlBox
                 Set pbServerOnClick to True
-                Set piColumnSpan to 6
-                Set piColumnIndex to 6
-                Set psCSSClass to "Tile LightAlternate"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Entrenadores</div><div class="Tile_Subtitle"></div></div>'
+                Set piColumnSpan to 8
+                Set psCSSClass to "SoccerTile SoccerTile_Staff"
+                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">DT</div><div class="SoccerTile_Title">Entrenadores</div><div class="SoccerTile_Text">Gestion tecnica de los equipos</div></div>'
                                 
                 WebRegisterPath ntNavigateForwardCustom oSelectEntrenador
                 
@@ -82,9 +86,10 @@ Object oDashboard is a cWebView
     
             Object oJugadores_Tile is a cWebHtmlBox
                 Set pbServerOnClick to True
-                Set piColumnSpan to 6
-                Set psCSSClass to "Tile Dark"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Jugadores</div><div class="Tile_Subtitle"></div></div>'
+                Set piColumnSpan to 8
+                Set piColumnIndex to 8
+                Set psCSSClass to "SoccerTile SoccerTile_Player"
+                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">11</div><div class="SoccerTile_Title">Jugadores</div><div class="SoccerTile_Text">Planteles, datos y detalle individual</div></div>'
     
                 WebRegisterPath ntNavigateForwardCustom oSelectJugador
                 
@@ -96,10 +101,10 @@ Object oDashboard is a cWebView
     
             Object oEquipos_Tile is a cWebHtmlBox
                 Set pbServerOnClick to True
-                Set piColumnSpan to 6
-                Set piColumnIndex to 6
-                Set psCSSClass to "Tile DarkAlternate"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Equipos</div><div class="Tile_Subtitle"></div></div>'
+                Set piColumnSpan to 8
+                Set piColumnIndex to 16
+                Set psCSSClass to "SoccerTile SoccerTile_Team"
+                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">FC</div><div class="SoccerTile_Title">Equipos</div><div class="SoccerTile_Text">Clubes asociados a cada liga</div></div>'
             
                 WebRegisterPath ntNavigateForwardCustom oSelectEquipo
                 
@@ -112,9 +117,9 @@ Object oDashboard is a cWebView
             
             Object oLigas_Tile is a cWebHtmlBox
                 Set pbServerOnClick to True
-                Set piColumnSpan to 6
-                Set psCSSClass to "Tile DarkAlternate"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Ligas</div><div class="Tile_Subtitle"></div></div>'
+                Set piColumnSpan to 12
+                Set psCSSClass to "SoccerTile SoccerTile_League"
+                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">LG</div><div class="SoccerTile_Title">Ligas</div><div class="SoccerTile_Text">Competencias, paises y cupos</div></div>'
             
                 WebRegisterPath ntNavigateForwardCustom oSelectLiga
                 
@@ -126,10 +131,10 @@ Object oDashboard is a cWebView
             
             Object oPosiciones_Tile is a cWebHtmlBox
                 Set pbServerOnClick to True
-                Set piColumnSpan to 6
-                Set piColumnIndex to 6
-                Set psCSSClass to "Tile DarkAlternate"
-                Set psHtml to '<div class="WebCon_Sizer" data-ServerOnClick="openview"><div Class="Tile_Title">Posiciones</div><div class="Tile_Subtitle"></div></div>'
+                Set piColumnSpan to 12
+                Set piColumnIndex to 12
+                Set psCSSClass to "SoccerTile SoccerTile_Position"
+                Set psHtml to '<div class="SoccerTile_Inner" data-ServerOnClick="openview"><div class="SoccerTile_Icon">POS</div><div class="SoccerTile_Title">Posiciones</div><div class="SoccerTile_Text">Roles dentro del campo de juego</div></div>'
             
                 WebRegisterPath ntNavigateForwardCustom oSelectPosicion
                 
