@@ -7,10 +7,14 @@ Use cWebPanel.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
+Use cWebList.pkg
+Use cWebColumn.pkg
+Use cWebColumnButton.pkg
 Use cWebTabContainer.pkg
 Use cWebTabPage.pkg
 
 Use ..\DDSrc\cligaDataDictionary.dd
+Use ..\DDSrc\cequipoDataDictionary.dd
 
 Object oZoomLiga is a cWebView
     Set piColumnCount to 12
@@ -22,6 +26,10 @@ Object oZoomLiga is a cWebView
     Set piMaxWidth to 1024
 
     Object oliga_DD is a cligaDataDictionary
+    End_Object 
+
+    Object oequipo_DD is a cequipoDataDictionary
+        Set DDO_Server To oliga_DD
     End_Object 
 
     Set Main_DD To oliga_DD
@@ -70,9 +78,53 @@ Object oZoomLiga is a cWebView
                     Entry_Item liga.EquiposMax
                     Set Server to oliga_DD
                     Set piColumnSpan to 3
-                    Set psLabel to "Máximo equipos"
+                    Set psLabel to "Maximo equipos"
                     Set piColumnIndex to 4
                     Set peLabelPosition to lpTop
+                End_Object
+
+                Object oEquiposLigaList is a cWebList
+                    Set Server to oequipo_DD
+                    Set piColumnSpan to 12
+                    Set piColumnIndex to 0
+                    Set pbFillHeight to True
+                    Set pbShowHeader to True
+                    Set piSortColumn to 0
+
+                    WebRegisterPath ntNavigateForward oZoomEquipo
+
+                    Object oequipoNombreCol is a cWebColumn
+                        Entry_Item equipo.Nombre
+                        Set psCaption to "Equipo"
+                        Set piWidth to 80
+                    End_Object
+
+                    Object oDetailButton is a cWebColumnButton
+                        Set psCaption to "btn"
+                        Set piWidth to 45
+                        Set pbFixedWidth to True
+                        Set pbResizable to False
+                        Set psBtnCssClass to "WebButtonIcon WebIcon_Info"
+                        Set peAlign to alignRight
+
+                        WebRegisterPath ntNavigateForward oZoomEquipo
+
+                        Procedure OnClick
+                            Send NavigatePath
+                        End_Procedure
+
+                        Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                            Move True to NavigateData.bReadOnly
+                        End_Procedure
+                    End_Object
+
+                    Procedure OnRowClick String sRowId
+                        Send NavigateForward of oZoomEquipo Self
+                    End_Procedure
+
+                    Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                        Move True to NavigateData.bReadOnly
+                    End_Procedure
                 End_Object
             End_Object 
         End_Object 

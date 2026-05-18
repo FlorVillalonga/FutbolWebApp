@@ -9,11 +9,22 @@ HorizontalGroups=1
 GroupSize=40
 SelectedTab=0
 [Window0]
+Filename=C:\DataFlex Projects\futbolWP\AppSrc\Dashboard.wo
+ViewType=1
+Top=21
+Left=0
+Bottom=360
+Right=988
+CursorLine=0
+CursorColumn=10
+TabIndex=1
+TabGroup=0
+[Window1]
 Filename=Workspace Dashboard
 ViewType=101
 Top=21
 Left=0
-Bottom=325
-Right=303
+Bottom=360
+Right=988
 TabIndex=0
 TabGroup=0

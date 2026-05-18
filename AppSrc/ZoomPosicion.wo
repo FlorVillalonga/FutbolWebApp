@@ -35,7 +35,7 @@ Object oZoomPosicion is a cWebView
             Set piColumnSpan to 8
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
-            Set psLabel to "Posición"
+            Set psLabel to "Posicion"
         End_Object 
     End_Object 
 

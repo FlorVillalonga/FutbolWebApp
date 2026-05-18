@@ -38,7 +38,7 @@ Object oSelectPosicion is a cWebView
 
         Object oposicionNombre is a cWebColumn
             Entry_Item posicion.Nombre
-            Set psCaption to "Posición"
+            Set psCaption to "Posicion"
             Set piWidth to 500
             Set psCSSClass to "RowCaption"
         End_Object 

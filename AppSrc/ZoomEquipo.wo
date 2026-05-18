@@ -52,7 +52,7 @@ Object oZoomEquipo is a cWebView
 
             Object oPage1 is a cWebTabPage
                 Set piColumnCount to 12
-                Set psCaption to "Liga y País"
+                Set psCaption to "Liga y Pais"
                 WebSetResponsive piColumnCount rmMobile to 4
 
                 Object oligaNombre is a cWebForm

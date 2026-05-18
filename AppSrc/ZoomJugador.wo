@@ -1,14 +1,14 @@
-﻿// C:\DataFlex Projects\FutbolWebApp\AppSrc\ZoomJugador.wo
+// C:\DataFlex Projects\FutbolWebApp\AppSrc\ZoomJugador.wo
 // Jugador
 //
 
 Use cWebView.pkg
 Use cWebPanel.pkg
+Use cWebGroup.pkg
 Use cWebMenuGroup.pkg
 Use cWebMenuItem.pkg
 Use cWebForm.pkg
-Use cWebTabContainer.pkg
-Use cWebTabPage.pkg
+Use cWebButton.pkg
 
 Use ..\DDSrc\cligaDataDictionary.dd
 Use ..\DDSrc\cequipoDataDictionary.dd
@@ -21,7 +21,7 @@ Object oZoomJugador is a cWebView
     Set peViewType to vtZoom
     Set pbShowCaption to False
     Set Verify_Save_Msg to 0
-    Set piMaxWidth to 1024
+    Set piMaxWidth to 760
 
     Object oliga_DD is a cligaDataDictionary
     End_Object 
@@ -37,71 +37,100 @@ Object oZoomJugador is a cWebView
     Set Main_DD To ojugador_DD
     Set Server  To ojugador_DD
 
-
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 12
-
-        Object ojugadorNombre is a cWebForm
-            Entry_Item jugador.Nombre
-            Set piColumnSpan to 4
-            Set piColumnIndex to 0
-            Set peLabelPosition to lpTop
-            Set psLabel to "Nombre"
-        End_Object 
-
-        Object ojugadorApellido is a cWebForm
-            Entry_Item jugador.Apellido
-            Set piColumnSpan to 4
-            Set piColumnIndex to 5
-            Set peLabelPosition to lpTop
-            Set psLabel to "Apellido"
-        End_Object 
         WebSetResponsive piColumnCount rmMobile to 4
 
-        Object ojugadorNacionalidad is a cWebForm
-            Entry_Item jugador.Nacionalidad
-            Set piColumnSpan to 3
-            Set piColumnIndex to 0
-            Set peLabelPosition to lpTop
-            Set psLabel to "Nacionalidad"
-        End_Object 
-
-        Object oWebTabContainer is a cWebTabContainer
-            Set pbFillHeight to True
+        Object oLigaGroup is a cWebGroup
+            Set psCaption to "Liga"
             Set piColumnSpan to 12
-            Set pbShowLabel to False
+            Set piColumnCount to 12
 
-            Object oPage1 is a cWebTabPage
-                Set piColumnCount to 12
-                Set psCaption to "Equipo y Liga"
-
-                Object oequipoNombre is a cWebForm
-                    Entry_Item equipo.Nombre
-                    Set piColumnSpan to 5
-                    Set piColumnIndex to 0
-                    Set peLabelPosition to lpTop
-                    Set psLabel to "Equipo"
-                    Set pbPromptButton to False
-                End_Object 
-
-                Object oligaNombre is a cWebForm
-                    Entry_Item liga.Nombre
-                    Set piColumnSpan to 3
-                    Set piColumnIndex to 6
-                    Set peLabelPosition to lpTop
-                    Set psLabel to "Liga"
-                End_Object 
-                WebSetResponsive piColumnCount rmMobile to 4
-
-                Object oligaPais is a cWebForm
-                    Entry_Item liga.Pais
-                    Set piColumnSpan to 4
-                    Set piColumnIndex to 0
-                    Set peLabelPosition to lpTop
-                    Set psLabel to "Pais"
-                End_Object 
+            Object oligaNombre is a cWebForm
+                Entry_Item liga.Nombre
+                Set piColumnSpan to 12
+                Set peLabelPosition to lpTop
+                Set psLabel to "Nombre"
             End_Object 
-        End_Object 
+
+            Object oligaPais is a cWebForm
+                Entry_Item liga.Pais
+                Set piColumnSpan to 9
+                Set peLabelPosition to lpTop
+                Set psLabel to "Pais"
+            End_Object 
+
+            Object oligaEquipos is a cWebForm
+                Entry_Item liga.Equipos
+                Set piColumnSpan to 2
+                Set piColumnIndex to 0
+                Set peLabelPosition to lpTop
+                Set psLabel to "Equipos"
+            End_Object
+        End_Object
+
+        Object oEquipoGroup is a cWebGroup
+            Set psCaption to "Equipo"
+            Set piColumnSpan to 12
+            Set piColumnCount to 12
+
+            Object oequipoNombre is a cWebForm
+                Entry_Item equipo.Nombre
+                Set piColumnSpan to 12
+                Set peLabelPosition to lpTop
+                Set psLabel to "Nombre"
+                Set pbPromptButton to False
+            End_Object 
+        End_Object
+
+        Object oJugadorGroup is a cWebGroup
+            Set psCaption to "Jugador"
+            Set piColumnSpan to 12
+            Set piColumnCount to 12
+
+            Object ojugadorNombre is a cWebForm
+                Entry_Item jugador.Nombre
+                Set piColumnSpan to 10
+                Set peLabelPosition to lpTop
+                Set psLabel to "Nombre"
+            End_Object 
+
+            Object ojugadorApellido is a cWebForm
+                Entry_Item jugador.Apellido
+                Set piColumnSpan to 10
+                Set peLabelPosition to lpTop
+                Set psLabel to "Apellidos"
+            End_Object 
+
+            Object ojugadorNacionalidad is a cWebForm
+                Entry_Item jugador.Nacionalidad
+                Set piColumnSpan to 8
+                Set peLabelPosition to lpTop
+                Set psLabel to "Nacionalidad"
+            End_Object 
+
+            Object oPosicionInfo is a cWebForm
+                Set piColumnSpan to 8
+                Set peLabelPosition to lpTop
+                Set psLabel to "Posicion"
+                Set pbEnabled to False
+            End_Object
+
+            Object oCambiarPosicionBtn is a cWebButton
+                Set psCaption to "Cambiar Posicion"
+                Set piColumnSpan to 4
+
+                WebRegisterPath ntNavigateForwardCustom oSelectPosicion
+
+                Procedure OnClick
+                    Send NavigatePath
+                End_Procedure
+
+                Procedure OnGetNavigateForwardData tWebNavigateData ByRef NavigateData Handle hoToView
+                    Move True to NavigateData.bReadOnly
+                End_Procedure
+            End_Object
+        End_Object
     End_Object 
 
     Object oActionGroup is a cWebMenuGroup
@@ -113,17 +142,16 @@ Object oZoomJugador is a cWebView
             Procedure OnClick
                 Send Request_Save
             End_Procedure
-
         End_Object 
 
         Object oEditBtn is a cWebMenuItem
             Set psCSSClass to "WebEditMenuItem"
             Set psCaption to "Edit"
+
             Procedure OnClick
                 Send ChangeEditMode True
                 Send SetActionButtons
             End_Procedure
-
         End_Object 
 
         Object oDeleteBtn is a cWebMenuItem
@@ -134,17 +162,16 @@ Object oZoomJugador is a cWebView
             Procedure OnClick
                 Send Request_Delete
             End_Procedure
-
         End_Object 
 
         Object oCancelChangesBtn is a cWebMenuItem
             Set psCSSClass to "WebIcon_Refresh"
             Set psCaption to "Clear Changes"
             Set peActionDisplay to adMenu
+
             Procedure OnClick
                 Send RefreshRecord
             End_Procedure
-
         End_Object 
     End_Object 
 
@@ -157,7 +184,6 @@ Object oZoomJugador is a cWebView
         Get GetNavigateData to NavigateData
         Get HasRecord of hoDD to bHasRecord
 
-        // let's hide all buttons and then Show the ones we want
         WebSet pbRender of oEditBtn to False
         WebSet pbRender of oSaveBtn to False
         WebSet pbRender of oCancelChangesBtn to False
@@ -174,36 +200,15 @@ Object oZoomJugador is a cWebView
     End_Procedure
 
     Procedure OnViewSaved Handle hoServer Boolean bChanged
-        // Close after save
         Send NavigateClose Self
     End_Procedure
 
-    // this will close the view after a delete
     Procedure OnViewDeleted Handle hoDDO
         Send NavigateClose Self
     End_Procedure
 
     Procedure OnNavigateForward tWebNavigateData NavigateData Integer hoInvokingView Integer hoInvokingObject
-        Case Begin
-            Case (NavigateData.eNavigateType = nfFromMain)
-                // If from main, this is a propbably a main file Select to Zoom.
-                Case Break
-
-            Case (NavigateData.eNavigateType = nfFromParent)
-                // If from parent, this is a constrained drill down.
-                Case Break
-
-            Case (NavigateData.eNavigateType = nfFromChild)
-                // If from child, this is a probably a parent Zoom from a Zoom.
-                Case Break
-
-            Case Else // must be nfUndefined
-
-        Case End
-
         Send SetActionButtons
-
     End_Procedure
 
 End_Object 
-
