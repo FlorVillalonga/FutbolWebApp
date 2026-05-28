@@ -59,18 +59,26 @@ Object oZoomEntrenador is a cWebView
             Set piColumnIndex to 7
         End_Object
 
+        Object oentrenadorID is a cWebForm
+            Entry_Item entrenador.ID
+            Set piColumnSpan to 2
+            Set piColumnIndex to 0
+            Set peLabelPosition to lpTop
+            Set psLabel to "ID"
+        End_Object
+
         Object oentrenadorNombre is a cWebForm
             Entry_Item entrenador.Nombre
-            Set piColumnSpan to 6
-            Set piColumnIndex to 0
+            Set piColumnSpan to 5
+            Set piColumnIndex to 2
             Set peLabelPosition to lpTop
             Set psLabel to "Nombre*"
         End_Object 
 
         Object oentrenadorApellido is a cWebForm
             Entry_Item entrenador.Apellido
-            Set piColumnSpan to 6
-            Set piColumnIndex to 6
+            Set piColumnSpan to 5
+            Set piColumnIndex to 7
             Set peLabelPosition to lpTop
             Set psLabel to "Apellido"
         End_Object 
@@ -87,12 +95,25 @@ Object oZoomEntrenador is a cWebView
                 Set psLabel to "Nacionalidad"
             End_Object 
 
+            Object oequipoID is a cWebForm
+                Entry_Item equipo.ID
+                Set piColumnSpan to 3
+                Set peLabelPosition to lpTop
+                Set psLabel to "Equipo ID"
+                Set pbPromptButton to True
+
+                WebRegisterPath ntNavigateForward oSelectEquipo
+
+                Procedure OnPrompt
+                    Send NavigatePath
+                End_Procedure
+            End_Object
+
             Object oequipoNombre is a cWebForm
                 Entry_Item equipo.Nombre
-                Set piColumnSpan to 6
+                Set piColumnSpan to 9
                 Set peLabelPosition to lpTop
                 Set psLabel to "Equipo"
-                Set pbPromptButton to False
             End_Object 
         End_Object
     End_Object 

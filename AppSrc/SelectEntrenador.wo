@@ -60,6 +60,12 @@ Object oSelectEntrenador is a cWebView
             Set psCSSClass to "RowCaption"
         End_Object 
 
+        Object oentrenadorNacionalidad is a cWebColumn
+            Entry_Item entrenador.Nacionalidad
+            Set psCaption to "Nacionalidad"
+            Set piWidth to 500
+        End_Object
+
         Object oDetailButton is a cWebColumnButton
             Set psCaption to "btn"
             Set piWidth to 45
@@ -83,7 +89,7 @@ Object oSelectEntrenador is a cWebView
 
         Object oequipoNombre is a cWebColumn
             Entry_Item equipo.Nombre
-            Set psCaption to "equipo.Nombre"
+            Set psCaption to "Equipo"
             Set piWidth to 1201
             Set pbNewLine to True
             Set psCSSClass to "RowDetail"

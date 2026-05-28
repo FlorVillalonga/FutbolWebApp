@@ -37,10 +37,18 @@ Object oZoomEquipo is a cWebView
         Set piColumnCount to 12
         WebSetResponsive piColumnCount rmMobile to 4
 
+        Object oequipoID is a cWebForm
+            Entry_Item equipo.ID
+            Set piColumnSpan to 2
+            Set piColumnIndex to 0
+            Set peLabelPosition to lpTop
+            Set psLabel to "ID"
+        End_Object
+
         Object oequipoNombre is a cWebForm
             Entry_Item equipo.Nombre
-            Set piColumnSpan to 5
-            Set piColumnIndex to 0
+            Set piColumnSpan to 8
+            Set piColumnIndex to 2
             Set peLabelPosition to lpTop
             Set psLabel to "Equipo"
         End_Object 
@@ -55,19 +63,33 @@ Object oZoomEquipo is a cWebView
                 Set psCaption to "Liga y Pais"
                 WebSetResponsive piColumnCount rmMobile to 4
 
+                Object oligaID is a cWebForm
+                    Entry_Item liga.ID
+                    Set piColumnSpan to 3
+                    Set piColumnIndex to 0
+                    Set peLabelPosition to lpTop
+                    Set psLabel to "Liga ID"
+                    Set pbPromptButton to True
+
+                    WebRegisterPath ntNavigateForward oSelectLiga
+
+                    Procedure OnPrompt
+                        Send NavigatePath
+                    End_Procedure
+                End_Object
+
                 Object oligaNombre is a cWebForm
                     Entry_Item liga.Nombre
                     Set piColumnSpan to 5
-                    Set piColumnIndex to 0
+                    Set piColumnIndex to 3
                     Set peLabelPosition to lpTop
                     Set psLabel to "Liga"
-                    Set pbPromptButton to False
                 End_Object 
 
                 Object oligaPais is a cWebForm
                     Entry_Item liga.Pais
-                    Set piColumnSpan to 5
-                    Set piColumnIndex to 6
+                    Set piColumnSpan to 4
+                    Set piColumnIndex to 8
                     Set peLabelPosition to lpTop
                     Set psLabel to "Pais"
                 End_Object 

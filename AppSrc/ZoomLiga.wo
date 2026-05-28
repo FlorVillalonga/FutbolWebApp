@@ -30,6 +30,7 @@ Object oZoomLiga is a cWebView
 
     Object oequipo_DD is a cequipoDataDictionary
         Set DDO_Server To oliga_DD
+        Set Constrain_File To liga.File_Number
     End_Object 
 
     Set Main_DD To oliga_DD

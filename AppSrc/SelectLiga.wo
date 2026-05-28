@@ -36,12 +36,36 @@ Object oSelectLiga is a cWebView
         Set pbShowHeader to False
         Set piSortColumn to 0
 
+        Object oligaID is a cWebColumn
+            Entry_Item liga.ID
+            Set psCaption to "ID"
+            Set piWidth to 120
+        End_Object
+
         Object oligaNombre is a cWebColumn
             Entry_Item liga.Nombre
             Set psCaption to "Liga"
             Set piWidth to 495
             Set psCSSClass to "RowCaption"
         End_Object 
+
+        Object oligaPais is a cWebColumn
+            Entry_Item liga.Pais
+            Set psCaption to "Pais"
+            Set piWidth to 500
+        End_Object
+
+        Object oligaEquipos is a cWebColumn
+            Entry_Item liga.Equipos
+            Set psCaption to "Equipos"
+            Set piWidth to 120
+        End_Object
+
+        Object oligaEquiposMax is a cWebColumn
+            Entry_Item liga.EquiposMax
+            Set psCaption to "Maximo"
+            Set piWidth to 120
+        End_Object
 
         Object oDetailButton is a cWebColumnButton
             Set psCaption to "btn"
@@ -130,6 +154,8 @@ Object oSelectLiga is a cWebView
 
             Case (NavigateData.eNavigateType = nfFromChild)
                 // If from child, this is a probably a parent lookup from a Zoom
+                WebSet pbRender of oNewButton to False
+                WebSet pbRender of oDetailButton to False
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromMain)
